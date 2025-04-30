@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generatedAt": "2025-04-30T13:34:24.300Z",
+    "tasksAnalyzed": 10,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Set up project structure and foundation",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the project structure setup into specific subtasks covering directory structure creation, dependency management, OpenAI API integration, utility function implementation, and CLI development. For each subtask, specify inputs, outputs, and acceptance criteria.",
+      "reasoning": "This task involves architectural decisions and technical setup that will impact all future development. It requires knowledge of Python project structure, API integration, and foundational utility development. The complexity comes from establishing patterns that will be used throughout the project."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Implement Niche Research Module",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the Niche Research Module implementation into subtasks covering interview workflow generation, template creation, positioning statement generation, data storage/retrieval, and integration with the foundation. For each subtask, include specific AI prompt engineering requirements and data structures.",
+      "reasoning": "This module requires sophisticated prompt engineering to generate effective interview questions and positioning statements. It also needs data modeling for storing research results and involves complex NLP tasks to process interview data into actionable positioning."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Implement Prototype Builder Module",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the Prototype Builder Module into subtasks covering feature selection algorithm, MVP design guidance generator, branding inspiration tool, first-use experience tips generator, data integration with niche research, and output formatting. For each subtask, specify the AI techniques required and integration points.",
+      "reasoning": "This module has multiple complex components that each require sophisticated AI implementations. The feature selection algorithm needs to process niche research data intelligently, and the various generators (MVP design, branding, first-use tips) each need careful prompt engineering and output formatting."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Implement Customer Value & Affiliate Terms Module",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the Customer Value & Affiliate Terms Module into subtasks covering LTV calculator implementation, affiliate revenue share recommender, financial projection visualizations, data integration from previous modules, and user interface for parameter configuration. For each subtask, include financial modeling requirements and data dependencies.",
+      "reasoning": "This module involves financial modeling and calculations that require precision. The LTV calculator and revenue share recommender need configurable parameters and business logic. Visualization components add complexity, as does ensuring that recommendations are informed by data from previous modules."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Implement basic Affiliate Engine",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the basic Affiliate Engine implementation into subtasks covering creator list building functionality, personalized DM generator, tracking mechanism for outreach, data structure design for affiliate management, and integration with previous modules. For each subtask, specify AI requirements for personalization and data sources needed.",
+      "reasoning": "This module requires sophisticated AI for identifying relevant creators and generating personalized outreach messages. The tracking mechanism adds complexity, as does the need to design effective data structures for affiliate management. Integration with product positioning from previous modules is also challenging."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Implement basic Gamification features",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the Gamification features implementation into subtasks covering leaderboard functionality, badge/achievement system, streak tracking, progress bar design, and notification system. For each subtask, include data model requirements, trigger conditions, and user experience considerations.",
+      "reasoning": "While conceptually straightforward, gamification features require careful design of data models, trigger conditions, and notification systems. The various components (leaderboards, badges, streaks, progress bars) each need their own logic and presentation considerations."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Implement AI Co-Creation (feedback summarization)",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the AI Co-Creation module into subtasks covering feedback collection mechanism, AI-powered summarization implementation, feedback categorization system, storage/retrieval system design, and sentiment analysis integration. For each subtask, specify prompt engineering requirements and data processing workflows.",
+      "reasoning": "This module involves complex NLP tasks including summarization and sentiment analysis using the OpenAI API. The feedback categorization system requires careful design, as does the storage and retrieval system. Effective prompt engineering is critical for getting useful summaries from the AI."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Implement Building in Public features",
+      "complexityScore": 6,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Divide the Building in Public features into subtasks covering artifact sharing workflow with templates, update generator implementation, trust-building workflow design, and scheduling system development. For each subtask, include content generation requirements and platform-specific considerations.",
+      "reasoning": "This module focuses on content generation and scheduling, with moderate complexity. The update generator needs to create compelling narratives from development data, and the artifact sharing workflow needs templates for different platforms. The scheduling system adds some technical complexity."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Create integration points between modules",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down the module integration task into subtasks covering data flow mechanisms, workflow automation, state management implementation, API interface design, error handling between modules, performance optimization, and testing of integrated workflows. For each subtask, specify the modules being connected and data dependencies.",
+      "reasoning": "This is one of the most complex tasks as it requires deep understanding of all previous modules and their interactions. Creating cohesive workflows across modules involves sophisticated state management, API design, and data flow mechanisms. The high number of dependencies (7 previous modules) significantly increases complexity."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement testing and documentation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the testing and documentation implementation into subtasks covering unit test development, integration test creation, user documentation writing, developer documentation creation, onboarding guide design, and sample output generation. For each subtask, specify coverage requirements, documentation standards, and quality metrics.",
+      "reasoning": "Comprehensive testing and documentation for a complex system with multiple AI-powered modules is challenging. Unit and integration tests need to account for AI variability, and documentation must cover both technical aspects and user guidance. Creating effective examples and onboarding materials for an AI system adds additional complexity."
+    }
+  ]
+}

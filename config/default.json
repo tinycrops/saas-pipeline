@@ -1,0 +1,14 @@
+{
+    "app_name": "SaaS Pipeline",
+    "debug": false,
+    "logging_level": "INFO",
+    "openai": {
+        "model": "gpt-4o",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "top_p": 1.0,
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "timeout": 60
+    }
+} 
