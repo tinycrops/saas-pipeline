@@ -1,0 +1,104 @@
+<context>
+# Overview
+SaaS Pipeline AI Builder empowers solo founders and small teams to build, launch, and scale profitable SaaS businesses from zero to $100k/month. It leverages AI, niche focus, and affiliate-driven growth, providing a modular, automated toolkit that guides users through every step of the SaaS journey. The product is designed for solo founders, indie hackers, small SaaS teams, and niche creators/operators, enabling rapid identification of high-value SaaS opportunities, automated prototyping, and scalable growth engines.
+
+# Core Features
+1. **Niche Research Module**
+    - Interview workflow for identifying pain points in a chosen niche
+    - Positioning statement generator
+2. **Prototype Builder**
+    - Feature selection and MVP design guidance
+    - Branding inspiration and first-use experience tips
+3. **Customer Value & Affiliate Terms**
+    - LTV calculator
+    - Affiliate revenue share recommender
+4. **Affiliate Engine**
+    - Creator list builder (B- and C-list)
+    - Personalized DM generator
+    - Affiliate tracking and dashboard
+5. **Gamification**
+    - Leaderboards, badges, streaks, and progress bars for affiliates and users
+    - Automated updates and spotlights
+6. **AI Co-Creation**
+    - Feedback summarization
+    - Feature suggestion and prioritization
+7. **Building in Public**
+    - Artifact sharing and update generator
+    - Trust-building workflow
+
+# User Experience
+- **User Personas:**
+    - Solo founders, indie hackers, small SaaS teams, niche creators/operators
+- **Key User Flows:**
+    - Discover niche pain points → Generate positioning → Design MVP → Set affiliate terms → Recruit affiliates → Gamify engagement → Collect feedback → Share progress publicly
+- **UI/UX Considerations:**
+    - Simple, modular interface
+    - Guided workflows for each module
+    - Gamified dashboards and progress indicators
+    - Easy sharing and transparency features
+</context>
+<PRD>
+# Technical Architecture
+- Python 3.8+
+- Modular codebase (one file per major function)
+- Support for integration with AI APIs (e.g., OpenAI)
+- Simple CLI or web interface for workflow automation (future)
+- Extensible for additional modules or integrations
+
+# Development Roadmap
+- **MVP Requirements:**
+    - Niche Research Module
+    - Prototype Builder
+    - Customer Value & Affiliate Terms
+    - Affiliate Engine (basic)
+    - Gamification (basic)
+    - AI Co-Creation (feedback summarization)
+    - Building in Public (artifact sharing)
+- **Future Enhancements:**
+    - Advanced affiliate tracking and dashboards
+    - Expanded gamification features
+    - Deeper AI-driven feature suggestions
+    - Full-featured web UI
+    - Payment processing
+    - Advanced analytics
+
+# Logical Dependency Chain
+- Foundation: Niche Research → Prototype Builder → Customer Value & Affiliate Terms
+- Growth: Affiliate Engine → Gamification
+- Feedback Loop: AI Co-Creation → Building in Public
+- Prioritize rapid MVP delivery with core modules, then layer on advanced features and integrations
+
+# Risks and Mitigations
+- **Low-quality niche selection:** Require multiple interviews and pain point validation
+- **Affiliate fraud or low engagement:** Gamification, tracking, and milestone rewards
+- **Feature bloat:** Prioritize based on user feedback and AI suggestions
+
+# Appendix
+- **Vision:** Empower solo founders and small teams to build, launch, and scale profitable SaaS businesses from zero to $100k/month by leveraging AI, niche focus, and affiliate-driven growth.
+- **Goals:**
+    - Enable rapid identification of high-value SaaS opportunities in underserved niches.
+    - Automate the process of prototyping, validating, and iterating on SaaS products.
+    - Build scalable affiliate and user growth engines with gamification.
+    - Use AI to continuously improve the product based on real user feedback.
+    - Foster transparency and trust by encouraging building in public.
+- **User Stories:**
+    - As a founder, I want to quickly discover a painful problem in a niche I understand, so I can build something valuable.
+    - As a builder, I want to create a magical MVP with a killer feature and great branding, so my product stands out.
+    - As a marketer, I want to recruit and incentivize affiliates, so I can grow my user base rapidly.
+    - As a user, I want to feel rewarded and engaged, so I keep coming back and sharing the product.
+    - As a product owner, I want to use AI to analyze feedback and suggest improvements, so I can keep churn low and value high.
+    - As a community member, I want to follow the product journey and trust the builder, so I feel invested in its success.
+- **Success Metrics:**
+    - Number of validated niche opportunities identified
+    - Time to MVP launch
+    - Affiliate signups and engagement rates
+    - User retention and streaks
+    - Number of product improvements driven by AI feedback
+    - Social engagement and public artifact shares
+- **Out of Scope (for v1):**
+    - Full-featured web UI
+    - Payment processing
+    - Advanced analytics
+- **Quote:**
+    > "Build for leverage, optionality, and user delight."
+</PRD> 
