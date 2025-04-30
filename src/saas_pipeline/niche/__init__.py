@@ -6,12 +6,13 @@ and generating positioning statements based on interview data.
 """
 
 import logging
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Union
 
 from .models import (
     Niche, Interview, InterviewQuestion, Response, PainPoint, PositioningStatement
 )
 from .repository import NicheRepository
+from .template import TemplateManager, QuestionType, QuestionTemplate, TemplateCategory
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +32,7 @@ class NicheResearchModule:
         """
         self.openai_client = openai_client
         self.repository = NicheRepository()
+        self.template_manager = TemplateManager(self.repository.data_dir)
         
     def analyze_niche(self, niche_name: str) -> Dict[str, Any]:
         """
@@ -136,6 +138,173 @@ class NicheResearchModule:
             self.repository.save_question(question)
         
         return questions
+    
+    def get_templates(self) -> List[Dict[str, Any]]:
+        """
+        List all available interview templates.
+        
+        Returns:
+            List of template metadata
+        """
+        return self.template_manager.list_templates()
+    
+    def get_template(self, template_id: str, version: Optional[str] = None) -> QuestionTemplate:
+        """
+        Get a specific interview template.
+        
+        Args:
+            template_id: ID of the template
+            version: Optional version of the template
+            
+        Returns:
+            Complete template object
+        """
+        return self.template_manager.get_template(template_id, version)
+    
+    def create_template(self, 
+                        name: str, 
+                        description: str, 
+                        niche_type: str,
+                        categories: Optional[List[TemplateCategory]] = None) -> str:
+        """
+        Create a new interview template.
+        
+        Args:
+            name: Name of the template
+            description: Description of the template
+            niche_type: Type of niche the template is for
+            categories: Optional initial categories
+            
+        Returns:
+            ID of the created template
+        """
+        return self.template_manager.create_template(
+            name=name,
+            description=description,
+            niche_type=niche_type,
+            categories=categories
+        )
+    
+    def add_template_category(self,
+                             template_id: str,
+                             name: str,
+                             description: str,
+                             order: Optional[int] = None) -> str:
+        """
+        Add a category to a template.
+        
+        Args:
+            template_id: ID of the template
+            name: Name of the category
+            description: Description of the category
+            order: Optional order of the category
+            
+        Returns:
+            ID of the created category
+        """
+        return self.template_manager.add_category(
+            template_id=template_id,
+            name=name,
+            description=description,
+            order=order
+        )
+    
+    def add_template_question(self,
+                             template_id: str,
+                             category_id: str,
+                             text: str,
+                             question_type: Union[QuestionType, str],
+                             options: Optional[List[str]] = None,
+                             required: bool = True,
+                             default_value: Optional[str] = None,
+                             order: Optional[int] = None) -> str:
+        """
+        Add a question to a template category.
+        
+        Args:
+            template_id: ID of the template
+            category_id: ID of the category
+            text: Question text
+            question_type: Type of question
+            options: Options for multiple choice questions
+            required: Whether the question is required
+            default_value: Optional default value
+            order: Optional order of the question
+            
+        Returns:
+            ID of the created question
+        """
+        return self.template_manager.add_question(
+            template_id=template_id,
+            category_id=category_id,
+            text=text,
+            question_type=question_type,
+            options=options,
+            required=required,
+            default_value=default_value,
+            order=order
+        )
+    
+    def update_template(self,
+                       template_id: str,
+                       updates: Dict[str, Any],
+                       create_new_version: bool = False,
+                       version_notes: str = "") -> QuestionTemplate:
+        """
+        Update a template, optionally creating a new version.
+        
+        Args:
+            template_id: ID of the template to update
+            updates: Dictionary of updates to apply
+            create_new_version: Whether to create a new version
+            version_notes: Notes about the changes
+            
+        Returns:
+            Updated template object
+        """
+        return self.template_manager.update_template(
+            template_id=template_id,
+            updates=updates,
+            create_new_version=create_new_version,
+            version_notes=version_notes
+        )
+    
+    def delete_template(self, template_id: str) -> bool:
+        """
+        Delete a template.
+        
+        Args:
+            template_id: ID of the template to delete
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        return self.template_manager.delete_template(template_id)
+    
+    def export_template(self, template_id: str, export_path: str) -> bool:
+        """
+        Export a template to a file.
+        
+        Args:
+            template_id: ID of the template to export
+            export_path: Path to export the template to
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        return self.template_manager.export_template(template_id, export_path)
+    
+    def import_template(self, import_path: str) -> Optional[str]:
+        """
+        Import a template from a file.
+        
+        Args:
+            import_path: Path to import the template from
+            
+        Returns:
+            ID of the imported template if successful, None otherwise
+        """
+        return self.template_manager.import_template(import_path)
     
     def create_interview(self, niche_id: str, expert_name: str, role: str) -> Interview:
         """
@@ -244,4 +413,53 @@ class NicheResearchModule:
         )
         
         self.repository.save_positioning_statement(positioning)
-        return positioning 
+        return positioning
+    
+    def generate_interview_from_template(self, niche_id: str, template_id: str, expert_name: str, role: str) -> Dict[str, Any]:
+        """
+        Generate an interview with questions based on a template.
+        
+        Args:
+            niche_id: ID of the niche
+            template_id: ID of the template to use
+            expert_name: Name of the expert being interviewed
+            role: Role of the expert in the niche
+            
+        Returns:
+            Dictionary with interview and question data
+        """
+        # Get the template
+        template = self.template_manager.get_template(template_id)
+        
+        # Create a new interview
+        interview = self.create_interview(niche_id, expert_name, role)
+        
+        # Create questions for each template question
+        question_map = {}  # Map template question IDs to created question IDs
+        
+        for category in template["categories"]:
+            for template_question in category["questions"]:
+                # Create a new question from the template
+                question = InterviewQuestion(
+                    text=template_question["text"],
+                    category=category["name"],
+                    order=template_question["order"]
+                )
+                
+                # Save the question
+                self.repository.save_question(question)
+                
+                # Add to interview
+                interview.add_question(question.id)
+                
+                # Map template question ID to created question ID
+                question_map[template_question["id"]] = question.id
+        
+        # Save the updated interview
+        self.repository.save_interview(interview)
+        
+        # Return the result
+        return {
+            "interview": interview.to_dict(),
+            "question_map": question_map
+        } 
