@@ -16,3 +16,5 @@ Each module contains actionable code, templates, or automation to help you execu
 ---
 
 > "You can build something real. Something useful. Something profitable. All it takes is one great use case, one small loop, one tiny success that compounds." 
+
+Source: https://x.com/gregisenberg/status/1917552629636346202
